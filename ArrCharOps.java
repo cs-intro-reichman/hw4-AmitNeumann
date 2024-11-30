@@ -103,7 +103,7 @@ public class ArrCharOps {
         for(int i=0;i<arr1.length;i++){ // adding the first array
             concatArr[i]=arr1[i];
         }
-        for(int i=arr1.length;i<arr2.length;i++){ // adding the second array
+        for(int i=arr1.length;i<concatArr.length;i++){ // adding the second array
             concatArr[i]=arr2[j];
             j++;
         }
@@ -190,22 +190,24 @@ public class ArrCharOps {
                 if(str1.charAt(i)!=str2.charAt(i)){ // searching the first that differs
                     if(str1.charAt(i)>str2.charAt(i)){ // checks if str1 is greater
                         return 1;
-                    } 
-                    break;
+                    }else {
+                        return -1;
+                    }
                 } 
             }
-            return -1;
-        } else { // str2 is the shorter
+            return -1; // All characters match, but str1 is shorter
+        } else { // str1.length() > str2.length()
                 for(int i=0;i<str2.length();i++){  // checks the short one
                     if(str1.charAt(i)!=str2.charAt(i)){ // searching the first that differs
                         if(str1.charAt(i)<str2.charAt(i)){ // checks if str2 is greater
                             return -1;
-                        } 
-                        break;
+                        } else {
+                            return 1;
+                        }
                     }
                 }
             }
         }
-        return 1;
+        return 1; // All characters match, but str1 is longer
   }
 }
