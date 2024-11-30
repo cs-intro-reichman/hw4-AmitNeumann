@@ -170,44 +170,27 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+       int minLength=Math.min(str1.length(), str2.length());
         if(str1==null||str2==null){
             return -2; // empty strings - error
-        } else {
-        if(str1.length()==str2.length()){ // same length 
-            for(int i=0;i<str1.length();i++){ 
-                if(str1.charAt(i)!=str2.charAt(i)){ // searching the first that differs
-                    if(str1.charAt(i)<str2.charAt(i)){ // checks if str1 is less
-                        return -1;
-                    } else {
-                        return 1; //  str1 is greater
-                    }
-                }
-            }
-            return 0; // are equals   
         }
-        if(str1.length()<str2.length()){ // str1 is shoter
-            for(int i=0;i<str1.length();i++){  // checks the short one
-                if(str1.charAt(i)!=str2.charAt(i)){ // searching the first that differs
-                    if(str1.charAt(i)>str2.charAt(i)){ // checks if str1 is greater
-                        return 1;
-                    }else {
+            for(int i=0;i<minLength;i++){
+                if(str1.charAt(i)!=str2.charAt(i)){
+                    if(str1.charAt(i)<str2.charAt(i)) {
                         return -1;
-                    }
-                } 
+                     } else {
+                              return 1;
+                            }
+                 }
             }
-            return -1; // All characters match, but str1 is shorter
-        } else { // str1.length() > str2.length()
-                for(int i=0;i<str2.length();i++){  // checks the short one
-                    if(str1.charAt(i)!=str2.charAt(i)){ // searching the first that differs
-                        if(str1.charAt(i)<str2.charAt(i)){ // checks if str2 is greater
-                            return -1;
-                        } else {
-                            return 1;
-                        }
-                    }
-                }
+            if(str1.length()==str2.length()){
+                return 0;
+            } else if (str1.length()<str2.length()){
+                    return -1;
+            }else {
+                return 1;
             }
+        
         }
-        return 1; // All characters match, but str1 is longer
   }
-}
+
