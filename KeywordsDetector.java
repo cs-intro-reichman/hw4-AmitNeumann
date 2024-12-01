@@ -21,6 +21,20 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        String sentence1;
+        
+        for(int i=0;i<sentences.length;i++) { // runs on the sentences
+            sentence1=sentences[i];
+            String[] words = sentence1.split(" ");
+            for (int j=0;j<words.length;j++){ // runs on the words of 1 sentence 
+                String word1=words[j];
+                for(int k=0;k<keywords.length;k++){ // compare 1 word to all the bullhit letters
+                    if(word1.equalsIgnoreCase(keywords[k])){
+                        System.out.println(sentence1);
+                        break;
+                    }
+                } // on the bullshit words
+            }// on the words of the sentence
+        }// on the sentences
     }
 }
